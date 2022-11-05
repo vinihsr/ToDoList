@@ -5,7 +5,7 @@
         const todolist = document.querySelector("#todo-list");
         const editform = document.querySelector("#edit-Form")
         const editinput = document.querySelector("#edit-input");
-        const cancelEditBtn = document.querySelector("#cancel-deit-btn");
+        const cancelEditBtn = document.querySelector("#cancel-edit-btn");
 
         let oldinputvalue;
 
