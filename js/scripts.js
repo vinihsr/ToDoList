@@ -1,18 +1,14 @@
-//seleção de elementos
+// Seleção de elementos
+const todoform = document.querySelector("#todo-form");
+const todoinput = document.querySelector("#todo-input");
+const editform = document.querySelector("#edit-Form");
+const editinput = document.querySelector("#edit-input");
+const cancelEditBtn = document.querySelector("#cancel-edit-btn");
+const searchForm = document.querySelector("#toolbar form");
+const searchInput = document.querySelector("#search-input");
+const outsideContent = document.getElementById("outside-content");
 
-        const todoform = document.querySelector("#todo-form");
-        const todoinput = document.querySelector("#todo-input");
-        const todolist = document.querySelector("#todo-list");
-        const editform = document.querySelector("#edit-Form")
-        const editinput = document.querySelector("#edit-input");
-        const cancelEditBtn = document.querySelector("#cancel-edit-btn");
-
-        let oldinputvalue;
-
-
-// funçoes
 const savetodo = (text) => {
-    
     const todo = document.createElement("div");
     todo.classList.add("todo");
 
@@ -20,47 +16,74 @@ const savetodo = (text) => {
     todotitle.innerText = text;
     todo.appendChild(todotitle);
 
-    const donebtn = document.createElement("button")
-    donebtn.classList.add("finish-todo")
+    const donebtn = document.createElement("button");
+    donebtn.classList.add("finish-todo");
     donebtn.innerHTML = '<i class="fa-solid fa-check"></i>';
     todo.appendChild(donebtn);
 
-    const editbtn = document.createElement("button")
-    editbtn.classList.add("edit-todo")
+    const editbtn = document.createElement("button");
+    editbtn.classList.add("edit-todo");
     editbtn.innerHTML = '<i class="fa-solid fa-pen"></i>';
     todo.appendChild(editbtn);
 
-    const deletebtn = document.createElement("button")
-    deletebtn.classList.add("remove-todo")
+    const deletebtn = document.createElement("button");
+    deletebtn.classList.add("remove-todo");
     deletebtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
     todo.appendChild(deletebtn);
 
-    todolist.appendChild(todo)
+    outsideContent.appendChild(todo);
 
     todoinput.value = "";
     todoinput.focus();
-}
+};
 
 const toggleForms = () => {
     editform.classList.toggle("hide");
     todoform.classList.toggle("hide");
-    todolist.classList.toggle("hide");
+    outsideContent.classList.toggle("hide");
 };
 
 const updatetodo = (text) => {
-
-    const todos = document.querySelectorAll(".todo")
+    const todos = document.querySelectorAll(".todo");
     
     todos.forEach((todo) => {
-        let todotitle = todo.querySelector("h3")
+        let todotitle = todo.querySelector("h3");
 
-        if(todotitle.innerText === oldinputvalue) {
+        if (todotitle.innerText === oldinputvalue) {
             todotitle.innerText = text;
         }
     });
 };
 
-//eventos
+const searchTodo = (searchText) => {
+    const todos = document.querySelectorAll(".todo");
+    let visibleCount = 0;
+    let totalCount = 0;
+    
+    todos.forEach((todo) => {
+        const title = todo.querySelector("h3").innerText.toLowerCase();
+        
+        if (title.includes(searchText.toLowerCase())) {
+            todo.style.visibility = "visible";
+            todo.style.order = -visibleCount;
+            visibleCount++;
+        } else {
+            todo.style.visibility = "hidden";
+            todo.style.order = totalCount;
+        }
+        
+        totalCount++;
+    });
+
+    // Limpar campo de pesquisa
+    searchInput.value = "";
+
+    // Ajustar a altura da área de contato
+    const todoList = document.getElementById("todo-list");
+    todoList.style.height = `${visibleCount * 50}px`; // Ajuste a altura conforme necessário (50px é um valor arbitrário)
+};
+
+// Eventos
 
 todoform.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -82,7 +105,7 @@ document.addEventListener('click', (e) => {
     }
 
     if (targetel.classList.contains("finish-todo")) {
-        parentel.classList.toggle("done")
+        parentel.classList.toggle("done");
     }
 
     if (targetel.classList.contains("remove-todo")) {
@@ -100,20 +123,21 @@ document.addEventListener('click', (e) => {
 cancelEditBtn.addEventListener("click", (e) => {
     e.preventDefault();
     toggleForms();
-  });
+});
 
 editform.addEventListener("submit", (e) => {
-
     e.preventDefault();
 
-    const editinputvalue = editinput.value
+    const editinputvalue = editinput.value;
 
     if (editinputvalue) {
-        updatetodo(editinputvalue)
+        updatetodo(editinputvalue);
     }
 
     toggleForms();
-
 });
 
-
+searchForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    searchTodo(searchInput.value);
+});

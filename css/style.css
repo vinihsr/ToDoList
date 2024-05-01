@@ -8,15 +8,13 @@
 }
 
 body{
-    background-image: url(../img/bg.png);
-    background-position: centr;
-    background-size: cover;
+    background-color: cornflowerblue;
 } 
 
 button{
     background-color: rgb(255, 255, 255);
-    color:blueviolet;
-    border:2px solid blueviolet;
+    color:#1f1861;
+    border:2px solid #1f1861;
     padding: .2rem 1rem;
     font-size: 1rem;
     cursor: pointer;
@@ -26,8 +24,12 @@ button{
     border-radius: 10px;
 }
 
+#buttontodo{
+    padding: 0px 1.2rem;
+}
+
 button:hover{
-    background-color: blueviolet;
+    background-color: #1f1861;
     color: rgb(255, 255, 255);
 }
 
@@ -36,7 +38,7 @@ button:hover > i{
 }
 
 button i{
-    color: blueviolet;
+    color: #2d1e70;
     font-weight: bold;
     pointer-events: none;
 }
@@ -51,25 +53,37 @@ input, select{
 
 /* to do header */
 
-.todo-container{
-    max-width: 450px;
-    margin: 3rem auto;
-    background-color: rgba(245, 245, 220, 0.651);
-    padding: 1.5rem;
-    border-radius: 15px;
+.todo-container {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px auto;
+    max-width: 600px; /* Ajuste conforme necessário */
 }
+
+.todo-container h1{
+    letter-spacing: 2px;
+    font: bolder;
+}
+
+.content {
+    max-height: calc(100vh - 100px); /* Ajuste conforme necessário */
+    overflow-y: auto;
+}
+
 
 .todo-container header{
     text-align: center;
     padding:  0 1rem 1rem;
-    border-bottom: 1px solid rgb(126, 26, 192)    ;
+    border-bottom: 1px solid #1f1861    ;
 }
 
 /* todo form */
 
 #todo-form, #edit-Form{
     padding: 1rem;
-    border-bottom: 1px solid rgb(126, 26, 192);
+    border-bottom: 1px solid #1f1861;
+
 }
 
 #todo-form p,
@@ -83,6 +97,7 @@ input, select{
 }
 
 .form-control input{
+    width: 100%;
     margin-right: 0.3rem;
 }
 
@@ -94,7 +109,7 @@ input, select{
 
 #toolbar{
     padding: 1rem;
-    border-bottom: 1px solid rgb(126, 26, 192);
+    border-bottom: 1px solid #1f1861;
     display: flex;
 }
 
@@ -103,12 +118,13 @@ input, select{
 }
 
 #search{
-    border-right: 1px solid rgb(175, 32, 231);
-    padding-right: 1rem;
-    margin-right: 1rem;
-    width: 65%;
+    width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+#search h4{
+    margin-bottom: 0.5rem;
 }
 
 #search form{
@@ -117,18 +133,9 @@ input, select{
 
 #search input{
     width: 100%;
-    margin-right: .3rem;
+    margin-right: 0.3rem;
 }
 
-#filter{
-    width: 35%;
-    display: flex;
-    flex-direction: column;
-}
-
-#filter select{
-    flex: 1;
-}
 
 /* todo list */
 
@@ -138,8 +145,10 @@ input, select{
     align-items: center;
     padding: 1rem;
     transition: .3s;
-    border: 1px solid rgb(135, 28, 206);
-    margin-top: 1.5rem;
+    border: 1px solid #1e1750;
+    margin: 20px auto;
+    width: 50%;
+    background-color: #f9f9f9;
 }
 
 .todo h3{
@@ -152,7 +161,7 @@ input, select{
 }
 
 .done{
-    background-color: rgb(168, 43, 226);
+    background-color: #6e61db;
 }
 
 .done h3{
