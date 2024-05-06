@@ -170,3 +170,17 @@ input, select{
     color: rgb(255, 255, 255);
 }
 
+@media only screen and (max-width: 768px) {
+    .todo-container {
+        padding: 10px; /* Reduce padding for smaller screens */
+        margin: 20px;
+    }
+
+    .todo-container h1 {
+        font-size: 1.5rem; /* Increase font size of header for smaller screens */
+    }
+
+    .todo button {
+        font-size: 0.8rem; /* Decrease font size of buttons for smaller screens */
+    }
+}
