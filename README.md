@@ -1,5 +1,5 @@
 # ToDoList
-Lista de afazeres usando javascript! (em andamento...)
+Lista de afazeres usando javascript!
 
-Link para entrar: https://vinicius123henrique321.github.io/ToDoList/ 
+Link para entrar: https://vinihsr.github.io/ToDoList/ 
 
